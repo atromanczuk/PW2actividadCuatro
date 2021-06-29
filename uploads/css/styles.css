@@ -1,0 +1,201 @@
+
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+    height: 100%;
+    line-height: 1.8;
+    font-family: "Raleway", sans-serif;
+    font-size: medium;
+}
+
+table.resp,
+.resp thead,
+.resp tbody,
+.resp tr,
+.resp th,
+.resp td,
+.resp caption {
+    display: block;
+}
+
+table.resp {
+    border: none
+}
+
+.resp thead tr {
+    display: none;
+}
+
+.resp tbody tr {
+    margin: 1em 0;
+    border: 1px solid #2ba6cb;
+}
+
+.resp td {
+    border: none;
+    border-bottom: 1px solid #dddddd;
+    position: relative;
+    padding-left: 45%;
+    text-align: left;
+}
+
+.resp tr td:last-child {
+    border-bottom: 1px double #dddddd;
+}
+
+.resp tr:last-child td:last-child {
+    border: none;
+}
+
+.resp td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+}
+
+
+
+.w3-bar .w3-button {
+    padding: 16px;
+}
+
+#myNavbar{
+    font-size: medium;
+}
+
+.container {
+    background-color: white;
+    padding: 2em 100px 2em 100px;
+}
+
+.container th {
+    padding: 5px;
+}
+
+input[type=text]
+, input[type=password]
+, input[type=email]
+, input[type=number]  {
+    width: 100%;
+    padding: 7px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    background: #f1f1f1;
+    font-size: medium;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type=text]:focus
+, input[type=password]:focus
+, input[type=email]:focus
+,  input[type=number]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.form-box{
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+.registerbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: auto;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+    font-size: medium;
+    display: block ;
+
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+
+form {border: 3px solid #f1f1f1;}
+
+#myNavbar{
+    font-size: medium;
+}
+
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: medium;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    padding-top: 7em;
+}
+
+.azul{
+    color: blue;
+}
+
+img.avatar {
+    width: 20%;
+    border-radius: 50%;
+}
+
+span.psw {
+    float: right;
+    padding: 6px;
+}
+
+
+.signin {
+    text-align: center;
+}
+
+@media screen and (max-width: 300px) {
+    .container {
+        padding: 50px 100px 50px 100px;
+    }
+
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+
+}
