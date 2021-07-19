@@ -26,7 +26,28 @@ class Utils{
 			return true;
 		}
 	}
-	
+
+    public static function isChofer(){
+        if((!isset($_SESSION['chofer'])) && (!isset($_SESSION['admin']))&& (!isset($_SESSION['supervisor']))&& (!isset($_SESSION['mecanico']))){
+            header("Location:".base_url);
+        }else{
+            return true;
+        }
+    }
+    public static function isEncargado(){
+        if((!isset($_SESSION['encargado'])) && (!isset($_SESSION['admin']))&& (!isset($_SESSION['supervisor']))){
+            header("Location:".base_url);
+        }else{
+            return true;
+        }
+    }
+    public static function isSupervisor(){
+        if((!isset($_SESSION['supervisor'])) && (!isset($_SESSION['admin']))){
+            header("Location:".base_url);
+        }else{
+            return true;
+        }
+    }
 
 	
 }

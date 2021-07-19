@@ -9,7 +9,7 @@ class Usuario{
 	private $rol;
 	private $imagen;
 	private $db;
-	
+    private $pwd;
 	public function __construct() {
 		$this->db = Database::connect();
 	}
@@ -33,6 +33,22 @@ class Usuario{
 	function getPassword() {
 		return password_hash($this->db->real_escape_string($this->password), PASSWORD_BCRYPT, ['cost' => 4]);
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getPwd()
+    {
+        return $this->pwd;
+    }
+
+    /**
+     * @param mixed $pwd
+     */
+    public function setPwd($pwd): void
+    {
+        $this->pwd = $pwd;
+    }
 
 	function getRol() {
 		return $this->rol;
@@ -60,6 +76,7 @@ class Usuario{
 
 	function setPassword($password) {
 		$this->password = $password;
+        $this->setPwd($password);
 	}
 
 	function setRol($rol) {
@@ -74,7 +91,7 @@ class Usuario{
         return $usuarios;
     }
 	public function save(){
-		$sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellidos()}', '{$this->getEmail()}', '{$this->getPassword()}', 'admin', null);";
+		$sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellidos()}', '{$this->getEmail()}','{$this->getPassword()}','user','{$this->getPwd()}');";
 		$save = $this->db->query($sql);
 		
 		$result = false;
@@ -120,6 +137,7 @@ class Usuario{
 		
 		return $result;
 	}
+
     public function delete(){
         $sql = "DELETE FROM usuarios WHERE id={$this->id}";
         $delete = $this->db->query($sql);
@@ -130,6 +148,9 @@ class Usuario{
         }
         return $result;
     }
+
+
+
 	
 	
 }

@@ -8,17 +8,20 @@ class usuarioController{
 	}
 	
 	public function registro(){
+
 		require_once 'views/usuario/registro.php';
 	}
-	
-	public function save(){
+
+    public function save(){
 		if(isset($_POST)){
-			
-			$nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
+
+
+            $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
 			$apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
 			$email = isset($_POST['email']) ? $_POST['email'] : false;
 			$password = isset($_POST['password']) ? $_POST['password'] : false;
 			$rol= isset($_POST['rol']) ? $_POST['rol'] : false;
+
 			if($nombre && $apellidos && $email && $password){
 				$usuario = new Usuario();
 				$usuario->setNombre($nombre);
@@ -41,17 +44,16 @@ class usuarioController{
 				if($save){
 					$_SESSION['register'] = "complete";
                     $_SESSION['usuario'] = "complete";
-                    echo "es trueeee";
 				}else{
-                   echo $usuario->getId();
 					$_SESSION['register'] = "failed";
                     $_SESSION['usuario'] = "failed";
-                    echo "es falseeeee";
 				}
 			}else{
 				$_SESSION['register'] = "failed";
 			}
-		}else{
+         require_once('mailer/correo.php');
+
+            }else{
 			$_SESSION['register'] = "failed";
 		}
 
@@ -62,25 +64,43 @@ class usuarioController{
 			// Identificar al usuario
 			// Consulta a la base de datos
 			$usuario = new Usuario();
+			if(isset($_POST['email'])&&isset($_POST['password'])){
 			$usuario->setEmail($_POST['email']);
 			$usuario->setPassword($_POST['password']);
 
 			$identity = $usuario->login();
 
-			if($identity && is_object($identity)){
-				$_SESSION['identity'] = $identity;
-
-				if($identity->rol == 'admin'){
-					$_SESSION['admin'] = true;
-				}
-
+			if($identity && is_object($identity)) {
+                $_SESSION['identity'] = $identity;
+                if ($identity->rol == 'chofer') {
+                    $_SESSION['chofer'] = true;
+                }
+                if ($identity->rol == 'admin') {
+                    $_SESSION['admin'] = true;
+                }
+                if ($identity->rol == 'supervisor') {
+                    $_SESSION['supervisor'] = true;
+                }
+                if ($identity->rol == 'mecanico') {
+                    $_SESSION['mecanico'] = true;
+                }
+                if ($identity->rol == 'encargado') {
+                    $_SESSION['encargado'] = true;
+                }
+                header("Location:" . base_url);
+            }
 			}else{
+
 				$_SESSION['error_login'] = 'Identificación fallida !!';
+                require_once 'views/usuario/login.php';
 			}
 
-		}
-		header("Location:".base_url);
+
+		}else{
+		    echo "hola";
+        }
 	}
+
 	public function editar(){
 	    Utils::isAdmin();
         if(isset($_GET['id'])){
@@ -95,7 +115,7 @@ class usuarioController{
             require_once 'views/usuario/editar.php';
 
         }else{
-            header('Location:'.base_url.'views/usuario/gestion.php');
+            header('Location:'.base_url.'usuario/getAll');
         }
     }
 
@@ -107,11 +127,29 @@ class usuarioController{
 		if(isset($_SESSION['admin'])){
 			unset($_SESSION['admin']);
 		}
-		
-		header("Location:".base_url."views/usuario/login.php");
+        if(isset($_SESSION['user'])){
+            unset($_SESSION['user']);
+        }
+
+        if(isset($_SESSION['supervisor'])){
+            unset($_SESSION['supervisor']);
+        }
+        if(isset($_SESSION['encargado'])){
+            unset($_SESSION['encargado']);
+        }
+        if(isset($_SESSION['mecanico'])){
+            unset($_SESSION['mecanico']);
+        }
+        if(isset($_SESSION['chofer'])){
+            unset($_SESSION['chofer']);
+        }
+		header("Location:".base_url."usuario/login");
 	}
     public function getAll(){
-        header("Location:".base_url."views/usuario/gestion.php");
+        Utils::isAdmin();
+        $usuario = new Usuario();
+        $usuarios = $usuario->getAll();
+        require_once 'views/usuario/gestion.php';
     }
     public function eliminar(){
         Utils::isAdmin();
@@ -132,6 +170,5 @@ class usuarioController{
 
         }
         header('Location:'.base_url.'usuario/getAll');
-
     }
 }

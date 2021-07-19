@@ -39,7 +39,7 @@ if(class_exists($nombre_controlador)){
 }else{
 	show_error();
 }
-require_once 'views/layout/sidebar.php';
+require_once 'views/layout/principal.php';
 ?>
 
 

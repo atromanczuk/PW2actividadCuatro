@@ -3,6 +3,8 @@
 RewriteEngine on
 ErrorDocument 404 http://localhost/trabajoFinal/error/index
 
+RewriteBase /trabajoFinal/
+
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
