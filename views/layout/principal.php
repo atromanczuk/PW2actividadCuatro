@@ -97,7 +97,6 @@ require_once 'views/layout/header.php'; ?>
     </div>
 </div>
 
-<!-- Promo Section "Statistics" -->
 <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
     <div class="w3-quarter">
         <span class="w3-xxlarge">14+</span>
@@ -117,7 +116,6 @@ require_once 'views/layout/header.php'; ?>
     </div>
 </div>
 
-<!-- Work Section -->
 <div class="w3-container" style="padding:128px 16px" id="work">
     <h3 class="w3-center">TRABAJOS</h3>
     <p class="w3-center w3-large">What we've done for people</p>
@@ -138,7 +136,6 @@ require_once 'views/layout/header.php'; ?>
     </div>
 
 
-    <!-- Modal for full size images on click-->
     <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
         <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
         <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
@@ -147,7 +144,6 @@ require_once 'views/layout/header.php'; ?>
         </div>
     </div>
 
-    <!-- Skills Section -->
     <div class="w3-container w3-light-grey w3-padding-64">
         <div class="w3-row-padding">
             <div class="w3-col m6">

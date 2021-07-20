@@ -36,7 +36,7 @@ class usuarioController{
 
                     $id = $_GET['id'];
                     $usuario->setId($id);
-                    echo "pase por aca";
+
                     $save = $usuario->editar();
                 }else{
                     $save = $usuario->save();
@@ -61,8 +61,7 @@ class usuarioController{
 	
 	public function login(){
 		if(isset($_POST)){
-			// Identificar al usuario
-			// Consulta a la base de datos
+
 			$usuario = new Usuario();
 			if(isset($_POST['email'])&&isset($_POST['password'])){
 			$usuario->setEmail($_POST['email']);
@@ -96,9 +95,7 @@ class usuarioController{
 			}
 
 
-		}else{
-		    echo "hola";
-        }
+		}
 	}
 
 	public function editar(){

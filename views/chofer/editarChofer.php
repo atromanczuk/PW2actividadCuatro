@@ -63,8 +63,8 @@
 <script>
 
 
-    var marker;          //variable del marcador
-    var coords = {};    //coordenadas obtenidas con la geolocalización
+    var marker;
+    var coords = {};
 
     //Funcion principal
     initMap = function ()

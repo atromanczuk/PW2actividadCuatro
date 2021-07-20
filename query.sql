@@ -1,15 +1,35 @@
 USE php_work;
- -- select * from usuarios;
-  select * from proforma;
- -- select * from chofer;
- -- drop table chofer;
+-- drop database  php_work
+-- GRANT ALL PRIVILEGES ON php_work TO 'root'@'localhost'
+-- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password
+ -- BY 'sasa';
 
-drop table proforma;
+CREATE TABLE usuarios(
+                         id int auto_increment not null PRIMARY KEY,
+                         nombre varchar(100) not null,
+                         apellidos varchar(255),
+                         email varchar(255) not null,
+                         password varchar(255) not null,
+                         rol varchar(20),
+                         pwd varchar(255)
+);
+
+
+INSERT INTO usuarios VALUES(NULL, 'Admin', 'Admin', 'admin@admin.com', 'contraseña', 'admin', 'admin');
+UPDATE usuarios
+SET password = "admin"
+SET rol = "admin"
+WHERE id = 1;
+
+
+
+
+
 
 create table proforma (
-id int not null auto_increment PRIMARY KEY,
-numero int,
-fecha date,
+ id int not null auto_increment PRIMARY KEY,
+ numero int,
+ fecha date,
  denominacion varchar(250),
   cuit varchar(250),
   direccion varchar(250),
@@ -32,93 +52,13 @@ fecha date,
   viaticos int,
   peajesYPesajes int,
   extras int,
- hazard varchar(250),
+  hazard varchar(250),
   reefer varchar(250),
   fee int,
   total int
-  )
+  );
 
-/*CREATE TABLE proforma (
-id int not null auto_increment PRIMARY KEY
-,numero int 
-,fecha date);
-*/
--- select * from proforma;
-
-
-select * from carga;
-
-
-CREATE TABLE costeo 
-(id int not null auto_increment PRIMARY KEY
-,kilometros varchar (200)
-,combustible varchar (200)
-,ETD varchar (200)
-,ETA varchar (200)
-,viaticos varchar (200)
-,peajesYPesajes varchar (200)
-,extras varchar (200)
-,hazard varchar (200)
-,reefer varchar (200)
-,fee varchar (200)
-,total varchar(200)
-
-);
-
-select * from costeo;
-
--- drop table carga;
-
-CREATE TABLE carga 
-(id int not null auto_increment PRIMARY KEY
-,tipo varchar (200)
-,peso_neto varchar (200)
-,hazard varchar (200)
-,reefer varchar (200)
-,temperatura varchar (200)
-,IMOClass varchar (200)
-,IMOSclass varchar (200)
-);
-
-select * from carga;
-
-
-CREATE TABLE viaje 
-(id int not null auto_increment PRIMARY KEY
-,destino varchar (200)
-,ETA varchar (200)
-,fecha_carga varchar (200)
-,origen varchar (200));
-
-select * from viaje;
-
-
-/*UPDATE usuarios
-SET password = "admin"
--- SET rol = "admin"
-WHERE id = 7;
-
-DELETE FROM  usuarios
-WHERE id = 6;
-
-
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password
- BY 'sasa';
-
--- drop database  php_work
--- GRANT ALL PRIVILEGES ON php_work TO 'root'@'localhost'
-
- CREATE TABLE usuarios(
-id int auto_increment not null PRIMARY KEY,
-nombre varchar(100) not null,
-apellidos varchar(255),
-email varchar(255) not null,
-password varchar(255) not null,
-rol varchar(20),
-pwd varchar(255)
-);
-
-/*create table viaje(
+create table viaje(
 id int not null auto_increment PRIMARY KEY,
 vehiculo int,
 origen varchar(200),
@@ -135,7 +75,7 @@ kilometros_recorridos_reales int,
 combustible_consumido_previsto int,
 combustible_consumido_real int
 );
-/*choferCREATE TABLE chofer
+CREATE TABLE chofer
 (id int not null auto_increment PRIMARY KEY
 ,latitud varchar(200)
 ,longitud varchar(200)
@@ -161,25 +101,27 @@ calendarizacion_service date,
 kilometraje int,
 kilometros_totales int
 );
-/*INSERT INTO usuarios VALUES(NULL, 'Admin', 'Admin', 'admin@admin.com', 'contraseña', 'admin', null);
-INSERT INTO usuarios VALUES(NULL, 'bbbbb', 'bbbb', 'bbbb@bb.com', 'bbbb', 'user', null);
-INSERT INTO usuarios VALUES(NULL, 'cccc', 'cccccc', 'cccc@ccccc.com', 'cccccc', 'user', null);
-*/
-  create table mantenimiento(
-id int not null auto_increment PRIMARY KEY,
-fecha_service date,
-km_unidad int,
-costo int,
-service_interno int,
-service_externo int,
-mecanico int,
-repuestos_cambiados int,
-idVehiculo int
+
+create table mantenimiento(
+        id int not null auto_increment PRIMARY KEY,
+        fecha_service date,
+        km_unidad int,
+        costo int,
+        service_interno int,
+        service_externo int,
+        mecanico int,
+        repuestos_cambiados int,
+        idVehiculo int
 );
 
-
- */
- */
-*/
+create table empleado (
+      id int not null auto_increment PRIMARY KEY,
+      dni varchar(200),
+      nombre varchar(200),
+      apellido varchar(200),
+      fecha_nacimiento date,
+      tipo_licencia varchar(200),
+      tipo_empleado varchar(200)
+);
 
 

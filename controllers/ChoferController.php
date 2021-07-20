@@ -116,7 +116,6 @@ class choferController
         $chofer = new Chofer();
         $chofer->setId($id);
         $pro = $chofer->getOne();
-       // $posicionamiento = $chofer->obtenerPosicion($chofer->getId());
 
         require_once 'views/chofer/ChoferQr.php';
     }

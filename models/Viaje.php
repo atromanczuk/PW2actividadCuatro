@@ -78,12 +78,7 @@ class Viaje
         return $result;
     }
 
-    public function finalizar()
-    {
-        //   $this->delete();
 
-        //return $result;
-    }
 
     public function obtenerProforma($idproforma)
     {
@@ -150,7 +145,9 @@ class Viaje
     {
         return $this->vehículo;
     }
-
+    public function finalizar()
+    {
+    }
     /**
      * @param mixed $vehículo
      */
